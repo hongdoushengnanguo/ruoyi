@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="include :: header('新增【请填写功能名称】')" />
+</head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-news-add">
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">学号：</label>
+                <div class="col-sm-8">
+                    <input name="studentNumber" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">班级：</label>
+                <div class="col-sm-8">
+                    <input name="studentClass" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">姓名：</label>
+                <div class="col-sm-8">
+                    <input name="studentName" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">是否有处分(是为1,否为0)：</label>
+                <div class="col-sm-8">
+                    <input name="isWrong" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">德育思政加分：</label>
+                <div class="col-sm-8">
+                    <input name="deyuSizhengAdd" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">德育思政减分：</label>
+                <div class="col-sm-8">
+                    <input name="deyuSizhengSub" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">德育思政分数：</label>
+                <div class="col-sm-8">
+                    <input name="deyuSizhengNumber" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">德育诚信加分：</label>
+                <div class="col-sm-8">
+                    <input name="deyuChengxinAdd" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">德育诚信减分：</label>
+                <div class="col-sm-8">
+                    <input name="deyuChengxinSub" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">德育诚信总分：</label>
+                <div class="col-sm-8">
+                    <input name="deyuChengxinNumber" class="form-control" type="text">
+                </div>
+            </div>
+
+
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">智育基本技能加分：</label>
+                <div class="col-sm-8">
+                    <input name="zhiyuJibenjinengAdd" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">智育基本技能减分：</label>
+                <div class="col-sm-8">
+                    <input name="zhiyuJibenjinengSub" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">智育基本技能总分：</label>
+                <div class="col-sm-8">
+                    <input name="zhiyuJibenjinengNumber" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">智育科技创新加分：</label>
+                <div class="col-sm-8">
+                    <input name="zhiyuKejichuangxinAdd" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">智育科技创新减分：</label>
+                <div class="col-sm-8">
+                    <input name="zhiyuKejichuangxinSub" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">智育科技创新总分：</label>
+                <div class="col-sm-8">
+                    <input name="zhiyuKejichuangxinNumber" class="form-control" type="text">
+                </div>
+            </div>
+
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">早操加分：</label>
+                <div class="col-sm-8">
+                    <input name="tiyuZaocaoAdd" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">早操减分：</label>
+                <div class="col-sm-8">
+                    <input name="tiyuZaocaoSub" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">课外加分：</label>
+                <div class="col-sm-8">
+                    <input name="tiyuKewaiAdd" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">课外减分：</label>
+                <div class="col-sm-8">
+                    <input name="tuyuKewaiSub" class="form-control" type="text">
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <th:block th:include="include :: footer" />
+    <script type="text/javascript">
+        var prefix = ctx + "system/news"
+        $("#form-news-add").validate({
+            focusCleanup: true
+        });
+
+        function submitHandler() {
+            if ($.validate.form()) {
+                $.operate.save(prefix + "/add", $('#form-news-add').serialize());
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.StudentNewsMapper">
+    
+    <resultMap type="StudentNews" id="StudentNewsResult">
+        <result property="id"    column="id"    />
+        <result property="studentNumber"    column="student_number"    />
+        <result property="studentName"    column="student_name"    />
+        <result property="studentClass"    column="student_class"    />
+        <result property="deyuSizhengAdd"    column="deyu_sizheng_add"    />
+        <result property="deyuSizhengSub"    column="deyu_sizheng_sub"    />
+        <result property="deyuSizhengNumber"    column="deyu_sizheng_number"    />
+        <result property="deyuChengxinAdd"    column="deyu_chengxin_add"    />
+        <result property="deyuChengxinSub"    column="deyu_chengxin_sub"    />
+        <result property="deyuChengxinNumber"    column="deyu_chengxin_number"    />
+        <result property="deyuNumber"    column="deyu_number"    />
+        <result property="deyuDengji"    column="deyu_dengji"    />
+        <result property="zhiyuJibenjinengAdd"    column="zhiyu_jibenjineng_add"    />
+        <result property="zhiyuJibenjinengSub"    column="zhiyu_jibenjineng_sub"    />
+        <result property="zhiyuJibenjinengNumber"    column="zhiyu_jibenjineng_number"    />
+        <result property="zhiyuKejichuangxinAdd"    column="zhiyu_kejichuangxin_add"    />
+        <result property="zhiyuKejichuangxinSub"    column="zhiyu_kejichuangxin_sub"    />
+        <result property="zhiyuKejichuangxinNumber"    column="zhiyu_kejichuangxin_number"    />
+        <result property="zhiyuNumber"    column="zhiyu_number"    />
+        <result property="tiyuZaocaoAdd"    column="tiyu_zaocao_add"    />
+        <result property="tiyuZaocaoSub"    column="tiyu_zaocao_sub"    />
+        <result property="tiyuKewaiAdd"    column="tiyu_kewai_add"    />
+        <result property="tuyuKewaiSub"    column="tuyu_kewai_sub"    />
+        <result property="tuyuNumber"    column="tuyu_number"    />
+        <result property="zongNumber"    column="zong_number"    />
+        <result property="jiangxuejinDengji"    column="jiangxuejin_dengji"    />
+        <result property="isWrong"    column="is_wrong"    />
+    </resultMap>
+
+    <sql id="selectStudentNewsVo">
+        select id, student_number, student_name,student_class, deyu_sizheng_add, deyu_sizheng_sub, deyu_sizheng_number, deyu_chengxin_add, deyu_chengxin_sub, deyu_chengxin_number, deyu_number, deyu_dengji, zhiyu_jibenjineng_add, zhiyu_jibenjineng_sub, zhiyu_jibenjineng_number, zhiyu_kejichuangxin_add, zhiyu_kejichuangxin_sub, zhiyu_kejichuangxin_number, zhiyu_number, tiyu_zaocao_add, tiyu_zaocao_sub, tiyu_kewai_add, tuyu_kewai_sub, tuyu_number, zong_number, jiangxuejin_dengji from student_news
+    </sql>
+
+    <select id="selectStudentNewsList" parameterType="StudentNews" resultMap="StudentNewsResult">
+        <include refid="selectStudentNewsVo"/>
+        <where>
+            <if test="id != null  and id != ''"> and id = #{id} </if>
+            <if test="studentNumber != null  and studentNumber != ''"> and student_number = #{studentNumber}</if>
+            <if test="studentName != null  and studentName != ''"> and student_name = #{studentName}</if>
+            <if test="studentClass != null  and studentClass != ''"> and student_class =  #{studentClass}</if>
+            <if test="deyuSizhengAdd != null "> and deyu_sizheng_add = #{deyuSizhengAdd}</if>
+
+            <if test="deyuSizhengSub != null "> and deyu_sizheng_sub = #{deyuSizhengSub}</if>
+            <if test="deyuSizhengNumber != null "> and deyu_sizheng_number = #{deyuSizhengNumber}</if>
+            <if test="deyuChengxinAdd != null "> and deyu_chengxin_add = #{deyuChengxinAdd}</if>
+            <if test="deyuChengxinSub != null "> and deyu_chengxin_sub = #{deyuChengxinSub}</if>
+            <if test="deyuChengxinNumber != null "> and deyu_chengxin_number = #{deyuChengxinNumber}</if>
+            <if test="deyuNumber != null "> and deyu_number = #{deyuNumber}</if>
+            <if test="deyuDengji != null "> and deyu_dengji = #{deyuDengji}</if>
+            <if test="zhiyuJibenjinengAdd != null "> and zhiyu_jibenjineng_add = #{zhiyuJibenjinengAdd}</if>
+            <if test="zhiyuJibenjinengSub != null "> and zhiyu_jibenjineng_sub = #{zhiyuJibenjinengSub}</if>
+            <if test="zhiyuJibenjinengNumber != null "> and zhiyu_jibenjineng_number = #{zhiyuJibenjinengNumber}</if>
+            <if test="zhiyuKejichuangxinAdd != null "> and zhiyu_kejichuangxin_add = #{zhiyuKejichuangxinAdd}</if>
+            <if test="zhiyuKejichuangxinSub != null "> and zhiyu_kejichuangxin_sub = #{zhiyuKejichuangxinSub}</if>
+            <if test="zhiyuKejichuangxinNumber != null "> and zhiyu_kejichuangxin_number = #{zhiyuKejichuangxinNumber}</if>
+            <if test="zhiyuNumber != null "> and zhiyu_number = #{zhiyuNumber}</if>
+            <if test="tiyuZaocaoAdd != null "> and tiyu_zaocao_add = #{tiyuZaocaoAdd}</if>
+            <if test="tiyuZaocaoSub != null "> and tiyu_zaocao_sub = #{tiyuZaocaoSub}</if>
+            <if test="tiyuKewaiAdd != null "> and tiyu_kewai_add = #{tiyuKewaiAdd}</if>
+            <if test="tuyuKewaiSub != null "> and tuyu_kewai_sub = #{tuyuKewaiSub}</if>
+            <if test="tuyuNumber != null "> and tuyu_number = #{tuyuNumber}</if>
+            <if test="zongNumber != null "> and zong_number = #{zongNumber}</if>
+            <if test="jiangxuejinDengji != null  and jiangxuejinDengji != ''"> and jiangxuejin_dengji = #{jiangxuejinDengji}</if>
+            and is_wrong=0
+        </where>
+
+        order by zong_number DESC
+    </select>
+    
+    <select id="selectStudentNewsById" parameterType="String" resultMap="StudentNewsResult">
+        <include refid="selectStudentNewsVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertStudentNews" parameterType="StudentNews">
+        insert into student_news
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null  and id != ''">id,</if>
+            <if test="studentNumber != null  and studentNumber != ''">student_number,</if>
+            <if test="studentName != null  and studentName != ''">student_name,</if>
+            <if test="studentClass != null  and studentClass != ''">student_class,</if>
+            <if test="isWrong != null  and isWrong != ''">is_wrong,</if>
+            <if test="deyuSizhengAdd != null ">deyu_sizheng_add,</if>
+            <if test="deyuSizhengSub != null ">deyu_sizheng_sub,</if>
+            <if test="deyuSizhengNumber != null ">deyu_sizheng_number,</if>
+            <if test="deyuChengxinAdd != null ">deyu_chengxin_add,</if>
+            <if test="deyuChengxinSub != null ">deyu_chengxin_sub,</if>
+            <if test="deyuChengxinNumber != null ">deyu_chengxin_number,</if>
+            <if test="deyuNumber != null ">deyu_number,</if>
+            <if test="deyuDengji != null ">deyu_dengji,</if>
+            <if test="zhiyuJibenjinengAdd != null ">zhiyu_jibenjineng_add,</if>
+            <if test="zhiyuJibenjinengSub != null ">zhiyu_jibenjineng_sub,</if>
+            <if test="zhiyuJibenjinengNumber != null ">zhiyu_jibenjineng_number,</if>
+            <if test="zhiyuKejichuangxinAdd != null ">zhiyu_kejichuangxin_add,</if>
+            <if test="zhiyuKejichuangxinSub != null ">zhiyu_kejichuangxin_sub,</if>
+            <if test="zhiyuKejichuangxinNumber != null ">zhiyu_kejichuangxin_number,</if>
+            <if test="zhiyuNumber != null ">zhiyu_number,</if>
+            <if test="tiyuZaocaoAdd != null ">tiyu_zaocao_add,</if>
+            <if test="tiyuZaocaoSub != null ">tiyu_zaocao_sub,</if>
+            <if test="tiyuKewaiAdd != null ">tiyu_kewai_add,</if>
+            <if test="tuyuKewaiSub != null ">tuyu_kewai_sub,</if>
+            <if test="tuyuNumber != null ">tuyu_number,</if>
+            <if test="zongNumber != null ">zong_number,</if>
+            <if test="jiangxuejinDengji != null  and jiangxuejinDengji != ''">jiangxuejin_dengji,</if>
+            <if test="isWrong != null  ">is_wrong,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+
+            <if test="id != null  and id != ''">#{id},</if>
+            <if test="studentNumber != null  and studentNumber != ''">#{studentNumber},</if>
+            <if test="studentName != null  and studentName != ''">#{studentName},</if>
+            <if test="studentClass != null  and studentClass != ''">#{studentClass},</if>
+            <if test="deyuSizhengAdd != null ">#{deyuSizhengAdd},</if>
+            <if test="deyuSizhengSub != null ">#{deyuSizhengSub},</if>
+            <if test="deyuSizhengNumber != null ">#{deyuSizhengNumber},</if>
+            <if test="deyuChengxinAdd != null ">#{deyuChengxinAdd},</if>
+            <if test="deyuChengxinSub != null ">#{deyuChengxinSub},</if>
+            <if test="deyuChengxinNumber != null ">#{deyuChengxinNumber},</if>
+            <if test="deyuNumber != null ">#{deyuNumber},</if>
+            <if test="deyuDengji != null ">#{deyuDengji},</if>
+            <if test="zhiyuJibenjinengAdd != null ">#{zhiyuJibenjinengAdd},</if>
+            <if test="zhiyuJibenjinengSub != null ">#{zhiyuJibenjinengSub},</if>
+            <if test="zhiyuJibenjinengNumber != null ">#{zhiyuJibenjinengNumber},</if>
+            <if test="zhiyuKejichuangxinAdd != null ">#{zhiyuKejichuangxinAdd},</if>
+            <if test="zhiyuKejichuangxinSub != null ">#{zhiyuKejichuangxinSub},</if>
+            <if test="zhiyuKejichuangxinNumber != null ">#{zhiyuKejichuangxinNumber},</if>
+            <if test="zhiyuNumber != null ">#{zhiyuNumber},</if>
+            <if test="tiyuZaocaoAdd != null ">#{tiyuZaocaoAdd},</if>
+            <if test="tiyuZaocaoSub != null ">#{tiyuZaocaoSub},</if>
+            <if test="tiyuKewaiAdd != null ">#{tiyuKewaiAdd},</if>
+            <if test="tuyuKewaiSub != null ">#{tuyuKewaiSub},</if>
+            <if test="tuyuNumber != null ">#{tuyuNumber},</if>
+            <if test="zongNumber != null ">#{zongNumber},</if>
+            <if test="jiangxuejinDengji != null  and jiangxuejinDengji != ''">#{jiangxuejinDengji},</if>
+            <if test="isWrong != null  ">#{isWrong},</if>
+         </trim>
+    </insert>
+
+    <update id="updateStudentNews" parameterType="StudentNews">
+        update student_news
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="studentNumber != null  and studentNumber != ''">student_number = #{studentNumber},</if>
+            <if test="studentName != null  and studentName != ''">student_name = #{studentName},</if>
+            <if test="deyuSizhengAdd != null ">deyu_sizheng_add = #{deyuSizhengAdd},</if>
+            <if test="deyuSizhengSub != null ">deyu_sizheng_sub = #{deyuSizhengSub},</if>
+            <if test="deyuSizhengNumber != null ">deyu_sizheng_number = #{deyuSizhengNumber},</if>
+            <if test="deyuChengxinAdd != null ">deyu_chengxin_add = #{deyuChengxinAdd},</if>
+            <if test="deyuChengxinSub != null ">deyu_chengxin_sub = #{deyuChengxinSub},</if>
+            <if test="deyuChengxinNumber != null ">deyu_chengxin_number = #{deyuChengxinNumber},</if>
+            <if test="deyuNumber != null ">deyu_number = #{deyuNumber},</if>
+            <if test="deyuDengji != null ">deyu_dengji = #{deyuDengji},</if>
+            <if test="zhiyuJibenjinengAdd != null ">zhiyu_jibenjineng_add = #{zhiyuJibenjinengAdd},</if>
+            <if test="zhiyuJibenjinengSub != null ">zhiyu_jibenjineng_sub = #{zhiyuJibenjinengSub},</if>
+            <if test="zhiyuJibenjinengNumber != null ">zhiyu_jibenjineng_number = #{zhiyuJibenjinengNumber},</if>
+            <if test="zhiyuKejichuangxinAdd != null ">zhiyu_kejichuangxin_add = #{zhiyuKejichuangxinAdd},</if>
+            <if test="zhiyuKejichuangxinSub != null ">zhiyu_kejichuangxin_sub = #{zhiyuKejichuangxinSub},</if>
+            <if test="zhiyuKejichuangxinNumber != null ">zhiyu_kejichuangxin_number = #{zhiyuKejichuangxinNumber},</if>
+            <if test="zhiyuNumber != null ">zhiyu_number = #{zhiyuNumber},</if>
+            <if test="tiyuZaocaoAdd != null ">tiyu_zaocao_add = #{tiyuZaocaoAdd},</if>
+            <if test="tiyuZaocaoSub != null ">tiyu_zaocao_sub = #{tiyuZaocaoSub},</if>
+            <if test="tiyuKewaiAdd != null ">tiyu_kewai_add = #{tiyuKewaiAdd},</if>
+            <if test="tuyuKewaiSub != null ">tuyu_kewai_sub = #{tuyuKewaiSub},</if>
+            <if test="tuyuNumber != null ">tuyu_number = #{tuyuNumber},</if>
+            <if test="zongNumber != null ">zong_number = #{zongNumber},</if>
+            <if test="jiangxuejinDengji != null  and jiangxuejinDengji != ''">jiangxuejin_dengji = #{jiangxuejinDengji},</if>
+            <if test="isWrong != null  ">is_wrong= #{isWrong},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteStudentNewsById" parameterType="String">
+        delete from student_news where id = #{id}
+    </delete>
+
+    <delete id="deleteStudentNewsByIds" parameterType="String">
+        delete from student_news where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

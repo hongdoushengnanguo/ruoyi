@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.JiangxuejinMapper">
+    
+    <resultMap type="Jiangxuejin" id="JiangxuejinResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="className"    column="class"    />
+        <result property="col"    column="col"    />
+        <result property="isWrong"    column="is_wrong"    />
+        <result property="jiangxuejinDengji"    column="jiangxuejin_dengji"    />
+    </resultMap>
+
+    <sql id="selectJiangxuejinVo">
+        select id, name, class, col, is_wrong, jiangxuejin_dengji from jiangxuejin
+    </sql>
+
+    <select id="selectJiangxuejinList" parameterType="Jiangxuejin" resultMap="JiangxuejinResult">
+        <include refid="selectJiangxuejinVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="className != null  and className != ''"> and class = #{className}</if>
+            <if test="col != null  and col != ''"> and col = #{col}</if>
+            <if test="isWrong != null "> and is_wrong = #{isWrong}</if>
+            <if test="jiangxuejinDengji != null  and jiangxuejinDengji != ''"> and jiangxuejin_dengji = #{jiangxuejinDengji}</if>
+        </where>
+    </select>
+    
+    <select id="selectJiangxuejinById" parameterType="String" resultMap="JiangxuejinResult">
+        <include refid="selectJiangxuejinVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertJiangxuejin" parameterType="Jiangxuejin">
+        insert into jiangxuejin
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null  and id != ''">id,</if>
+            <if test="name != null  and name != ''">name,</if>
+            <if test="className != null  and className != ''">class,</if>
+            <if test="col != null  and col != ''">col,</if>
+            <if test="isWrong != null ">is_wrong,</if>
+            <if test="jiangxuejinDengji != null  and jiangxuejinDengji != ''">jiangxuejin_dengji,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null  and id != ''">#{id},</if>
+            <if test="name != null  and name != ''">#{name},</if>
+            <if test="className != null  and className != ''">#{className},</if>
+            <if test="col != null  and col != ''">#{col},</if>
+            <if test="isWrong != null ">#{isWrong},</if>
+            <if test="jiangxuejinDengji != null  and jiangxuejinDengji != ''">#{jiangxuejinDengji},</if>
+         </trim>
+    </insert>
+
+    <update id="updateJiangxuejin" parameterType="Jiangxuejin">
+        update jiangxuejin
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null  and name != ''">name = #{name},</if>
+            <if test="className != null  and className != ''">class = #{className},</if>
+            <if test="col != null  and col != ''">col = #{col},</if>
+            <if test="isWrong != null ">is_wrong = #{isWrong},</if>
+            <if test="jiangxuejinDengji != null  and jiangxuejinDengji != ''">jiangxuejin_dengji = #{jiangxuejinDengji},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteJiangxuejinById" parameterType="String">
+        delete from jiangxuejin where id = #{id}
+    </delete>
+
+    <delete id="deleteJiangxuejinByIds" parameterType="String">
+        delete from jiangxuejin where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="include :: header('修改【请填写功能名称】')" />
+</head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-news-edit" th:object="${studentNews}">
+            <input name="id" th:field="*{id}" type="hidden">
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">德育思政加分：</label>
+                <div class="col-sm-8">
+                    <input name="deyuSizhengAdd" th:field="*{deyuSizhengAdd}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">德育思政减分：</label>
+                <div class="col-sm-8">
+                    <input name="deyuSizhengSub" th:field="*{deyuSizhengSub}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">德育思政总分：</label>
+                <div class="col-sm-8">
+                    <input name="deyuSizhengNumber" th:field="*{deyuSizhengNumber}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">德育诚信加分：</label>
+                <div class="col-sm-8">
+                    <input name="deyuChengxinAdd" th:field="*{deyuChengxinAdd}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">德育诚信减分：</label>
+                <div class="col-sm-8">
+                    <input name="deyuChengxinSub" th:field="*{deyuChengxinSub}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">德育诚信总分：</label>
+                <div class="col-sm-8">
+                    <input name="deyuChengxinNumber" th:field="*{deyuChengxinNumber}" class="form-control" type="text">
+                </div>
+            </div>
+
+
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">智育基本技能加分：</label>
+                <div class="col-sm-8">
+                    <input name="zhiyuJibenjinengAdd" th:field="*{zhiyuJibenjinengAdd}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">智育基本技能减分：</label>
+                <div class="col-sm-8">
+                    <input name="zhiyuJibenjinengSub" th:field="*{zhiyuJibenjinengSub}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">智育基本技能总分：</label>
+                <div class="col-sm-8">
+                    <input name="zhiyuJibenjinengNumber" th:field="*{zhiyuJibenjinengNumber}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">智育科技创新加分：</label>
+                <div class="col-sm-8">
+                    <input name="zhiyuKejichuangxinAdd" th:field="*{zhiyuKejichuangxinAdd}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">智育科技创新减分：</label>
+                <div class="col-sm-8">
+                    <input name="zhiyuKejichuangxinSub" th:field="*{zhiyuKejichuangxinSub}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">智育科技创新分数：</label>
+                <div class="col-sm-8">
+                    <input name="zhiyuKejichuangxinNumber" th:field="*{zhiyuKejichuangxinNumber}" class="form-control" type="text">
+                </div>
+            </div>
+
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">早操加分：</label>
+                <div class="col-sm-8">
+                    <input name="tiyuZaocaoAdd" th:field="*{tiyuZaocaoAdd}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">早操减分：</label>
+                <div class="col-sm-8">
+                    <input name="tiyuZaocaoSub" th:field="*{tiyuZaocaoSub}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">课外加分：</label>
+                <div class="col-sm-8">
+                    <input name="tiyuKewaiAdd" th:field="*{tiyuKewaiAdd}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">课外减分：</label>
+                <div class="col-sm-8">
+                    <input name="tuyuKewaiSub" th:field="*{tuyuKewaiSub}" class="form-control" type="text">
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <th:block th:include="include :: footer" />
+    <script type="text/javascript">
+        var prefix = ctx + "system/news";
+        $("#form-news-edit").validate({
+            focusCleanup: true
+        });
+
+        function submitHandler() {
+            if ($.validate.form()) {
+                $.operate.save(prefix + "/edit", $('#form-news-edit').serialize());
+            }
+        }
+    </script>
+</body>
+</html>
